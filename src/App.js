@@ -1,12 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
 import AppLayout from "./layout/AppLayout";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
-import MoviePage from "./pages/Movies/MoviePage";
-import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import "bootstrap/dist/css/bootstrap.min.css";
+import MoviePage from "./pages/MoviePage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
