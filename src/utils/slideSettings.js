@@ -1,5 +1,3 @@
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
 export const settings = {
   dots: true,
   infinite: true,
@@ -7,8 +5,6 @@ export const settings = {
   slidesToShow: 8,
   slidesToScroll: 1,
   initialSlide: 0,
-  prevArrow: <FaChevronLeft />,
-  nextArrow: <FaChevronRight />,
   responsive: [
     {
       breakpoint: 1440,
