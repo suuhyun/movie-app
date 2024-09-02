@@ -1,6 +1,6 @@
 body {
   background-color: black !important;
-  color: white;
-  font-family: "Open Sans", sans-serif;
+  color: white !important;
+  font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
 }

@@ -15,18 +15,18 @@ const AppLayout = () => {
   );
   return (
     <div>
-      <div className="relative flex justify-between items-center px-5 !z-10 bg-gradient-to-b from-[#1F1F1F] to-transparent border-b-[0.05rem] border-opacity-50 border-slate-100">
+      <div className="relative flex justify-between items-center px-10 !z-10 bg-gradient-to-b from-[#1F1F1F] to-transparent">
         <div className="nav__left grid grid-cols-2 gap-8 items-center ">
           <div className="flex items-center gap-2">
             <RxHamburgerMenu
-              className="text-3xl cursor-pointer md:hidden min-w-10"
+              className="text-3xl cursor-pointer md:hidden min-w-10 "
               onClick={() => setSidebarOpen(!sidebarOpen)}
             />
             <Link to="/">
               <img className="logo w-32 py-2 min-w-32" src={logo} alt="logo" />
             </Link>
           </div>
-          <div className="flex gap-6 max-md:hidden">
+          <div className="flex gap-8 max-md:hidden">
             <NavButton to="/">Home</NavButton>
             <NavButton to="/movies">Movies</NavButton>
           </div>
