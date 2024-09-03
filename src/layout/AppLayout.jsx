@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
@@ -6,13 +6,22 @@ import { useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const AppLayout = () => {
-  const inputRef = useRef(null);
+  const [keyword, setKeyword] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
   const NavButton = ({ to, children }) => (
     <Link to={to}>
       <button className="hover:opacity-50 transition ease">{children}</button>
     </Link>
   );
+
+  const searchByKeyword = (e) => {
+    if (e.key === "Enter") {
+      navigate(`/movies?q=${keyword}`);
+      setKeyword("");
+    }
+  };
   return (
     <div>
       <div className="relative flex justify-between items-center px-10 !z-10 bg-gradient-to-b from-[#1F1F1F] to-transparent">
@@ -38,6 +47,9 @@ const AppLayout = () => {
           />
           <input
             ref={inputRef}
+            onKeyDown={searchByKeyword}
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             type="text"
             className="focus:outline-none bg-transparent focus:w-52 w-0 transition-all ease-in-out duration-300"
             placeholder="Search"

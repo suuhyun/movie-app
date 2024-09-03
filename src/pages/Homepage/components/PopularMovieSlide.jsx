@@ -1,11 +1,7 @@
 import React from "react";
 import { usePopularMoviesQuery } from "../../../hooks/usePopularMovies";
-import Slider from "react-slick";
-import MovieCard from "./MovieCard";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { settings } from "../../../utils/slideSettings";
 import BeatLoader from "react-spinners/BeatLoader";
+import MovieSlider from "../../../common/MovieSlider";
 
 function PopularMovieSlide() {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
@@ -25,13 +21,8 @@ function PopularMovieSlide() {
   }
 
   return (
-    <div className="">
-      <div className="text-xl">Trending Movies</div>
-      <Slider {...settings} className="inline-block">
-        {data.results.map((movie, index) => (
-          <MovieCard movie={movie} key={index} />
-        ))}
-      </Slider>
+    <div>
+      <MovieSlider title="Trending Movies" movies={data.results} />
     </div>
   );
 }
