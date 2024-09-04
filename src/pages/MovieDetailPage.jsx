@@ -40,24 +40,37 @@ const MovieDetailPage = () => {
   };
   return (
     <div className="flex justify-center">
-      {openModal && <TrailerModal movieId={data.id} setOpenModal={setOpenModal} />}
+      {openModal && (
+        <TrailerModal movieId={data.id} setOpenModal={setOpenModal} />
+      )}
       <div className="grid md:grid-cols-2 grid-cols-1 md:w-4/5">
         <div className="relative">
-          <img
-            src={`https://www.themoviedb.org/t/p/w1280${data.poster_path}`}
-            alt=""
-            className="max-md:hidden lg:px-20 md:px-10"
-          />
-          <img
-            src={`https://www.themoviedb.org/t/p/w1066_and_h600_bestv2${data.poster_path}`}
-            className="md:hidden"
-            alt=""
-          />
+          {data?.poster_path ? (
+            <>
+              <img
+                src={`https://www.themoviedb.org/t/p/w1280${data?.poster_path}`}
+                alt=""
+                className="max-md:hidden lg:px-20 md:px-10"
+              />
+              <img
+                src={`https://www.themoviedb.org/t/p/w1066_and_h600_bestv2${data?.poster_path}`}
+                className="md:hidden"
+                alt=""
+              />
+            </>
+          ) : (
+            <img
+              src="https://yourmobilevet.co.uk/images/listings/no-image.jpg"
+              alt=""
+              className="lg:px-20 md:px-10 w-full"
+            />
+          )}
+
           <div className="absolute md:hidden h-1/2 bg-gradient-to-t from-black to-transparent w-full !z-20 bottom-0"></div>
         </div>
         <div className="flex flex-col max-md:m-10 lg:pr-20 gap-1">
           <div className="flex gap-2 my-2 !flex-wrap">
-            {data.genres.map((genre) => (
+            {data?.genres.map((genre) => (
               <button className="text-nowrap p-1 px-2 bg-gray-500 bg-opacity-40 rounded-lg font-semibold h-fit text-sm">
                 {genre.name}
               </button>
@@ -65,10 +78,10 @@ const MovieDetailPage = () => {
           </div>
           <div className="opacity-70">
             {formatRuntime(data.runtime)} &#x2022; {data.release_date} &#x2022;{" "}
-            {data.spoken_languages[0].english_name}
+            {data?.spoken_languages[0]?.english_name}
           </div>
-          <div className="lg:text-5xl text-4xl mb-3">{data.title}</div>
-          <div>{data.tagline}</div>
+          <div className="lg:text-5xl text-4xl mb-3">{data?.title}</div>
+          <div>{data?.tagline}</div>
 
           <div className="flex gap-3 mt-3">
             <div className="flex items-center gap-1 text-md">
@@ -88,16 +101,16 @@ const MovieDetailPage = () => {
             </div>
           </div>
           <hr className="my-3 opacity-70" />
-          <div className="">{data.overview}</div>
+          <div className="">{data?.overview}</div>
           <hr className="my-3 opacity-70" />
           <div className="font-semibold">
             <div>
               <span className="text-[#14c6b3]">Revenue :</span> $
-              {data.revenue.toLocaleString()}
+              {data?.revenue.toLocaleString()}
             </div>
             <div>
               <span className="text-[#14c6b3]">Budget :</span> $
-              {data.budget.toLocaleString()}
+              {data?.budget.toLocaleString()}
             </div>
           </div>
           <div className="flex gap-5 *:py-2 *:px-8 *:bg-[#14c6b3] *:rounded-full text-black my-8">
@@ -111,7 +124,9 @@ const MovieDetailPage = () => {
               Trailer
               <FaPlay className="text-sm" />
             </button>
-            <button className="text-lg" onClick={() => navigate(`./reviews`)}>Reviews</button>
+            <button className="text-lg" onClick={() => navigate(`./reviews`)}>
+              Reviews
+            </button>
           </div>
         </div>
       </div>
