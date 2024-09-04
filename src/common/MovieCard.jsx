@@ -21,7 +21,7 @@ const MovieCard = ({ movie }) => {
       onClick={goToDetailPage}
     >
       <div className="w-full h-full hover:opacity-100 bg-[rgba(43,41,41,0.7)] opacity-0 transition-all ease-in-out delay-150 p-3 content-center">
-        <div className="font-semibold text-xl mb-2">{movie?.title}</div>
+        <div className="font-semibold text-xl mb-2 line-clamp-3">{movie?.title}</div>
         <GenreList genreIdList={movie?.genre_ids} />
         <div className="flex justify-between">
           <div>
