@@ -32,7 +32,7 @@ const TrailerModal = ({ movieId, setOpenModal }) => {
     },
   };
 
-  const officials = data.results.filter((video) =>
+  const officials = data.results?.filter((video) =>
     video.name.startsWith("Official")
   );
 
@@ -45,11 +45,11 @@ const TrailerModal = ({ movieId, setOpenModal }) => {
         className={`relative md:w-[80%] w-[100%] max-w-full h-0`}
         style={{ paddingBottom: "56.25%" }}
       >
-        <YouTube
+        {officials.length > 0 ? <YouTube
           videoId={officials[0]?.key}
           opts={opts}
           className="absolute inset-0"
-        />
+        /> : <div className="text-center">No Trailer</div>}
       </div>
     </div>
   );
