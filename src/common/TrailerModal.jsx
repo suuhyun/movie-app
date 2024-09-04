@@ -49,7 +49,7 @@ const TrailerModal = ({ movieId, setOpenModal }) => {
           videoId={officials[0]?.key}
           opts={opts}
           className="absolute inset-0"
-        /> : <div className="text-center">No Trailer</div>}
+        /> : <div className="text-center md:m-48">No Trailer</div>}
       </div>
     </div>
   );
