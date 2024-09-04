@@ -9,7 +9,7 @@ function MovieSlider({title, movies}) {
 
   return (
     <div className="">
-      <div className="text-xl">{title}</div>
+      <div className="text-2xl">{title}</div>
       <Slider {...settings} className="inline-block">
         {movies.map((movie, index) => (
           <MovieCard movie={movie} key={index} />
