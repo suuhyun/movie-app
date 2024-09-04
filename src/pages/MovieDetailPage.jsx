@@ -56,7 +56,7 @@ const MovieDetailPage = () => {
           <div className="absolute md:hidden h-1/2 bg-gradient-to-t from-black to-transparent w-full !z-20 bottom-0"></div>
         </div>
         <div className="flex flex-col max-md:m-10 lg:pr-20 gap-1">
-          <div className="flex gap-2 my-2">
+          <div className="flex gap-2 my-2 !flex-wrap">
             {data.genres.map((genre) => (
               <button className="text-nowrap p-1 px-2 bg-gray-500 bg-opacity-40 rounded-lg font-semibold h-fit text-sm">
                 {genre.name}
