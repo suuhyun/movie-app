@@ -1,8 +1,7 @@
+import React, { useRef, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { IoSearchOutline } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
-import { useRef, useState } from "react";
+import { IoSearchOutline, IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const AppLayout = () => {
@@ -10,6 +9,7 @@ const AppLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+
   const NavButton = ({ to, children }) => (
     <Link to={to}>
       <button className="hover:opacity-50 transition ease">{children}</button>
@@ -22,27 +22,26 @@ const AppLayout = () => {
       setKeyword("");
     }
   };
+
   return (
     <div>
-      <div className="relative flex justify-between items-center px-10 !z-10 bg-gradient-to-b from-[#1F1F1F] to-transparent">
-        <div className="nav__left grid grid-cols-2 gap-8 items-center ">
-          <div className="flex items-center gap-2">
-            <RxHamburgerMenu
-              className="text-3xl cursor-pointer md:hidden min-w-10 "
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-            />
-            <Link to="/">
-              <img className="logo w-32 py-2 min-w-32" src={logo} alt="logo" />
-            </Link>
-          </div>
-          <div className="flex gap-8 max-md:hidden">
-            <NavButton to="/">Home</NavButton>
-            <NavButton to="/movies">Movies</NavButton>
-          </div>
+      <div className="relative flex justify-between items-center px-10 bg-gradient-to-b from-[#1F1F1F] to-transparent z-20">
+        <div className="flex items-center gap-2">
+          <RxHamburgerMenu
+            className="text-3xl cursor-pointer md:hidden"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          />
+          <Link to="/">
+            <img className="w-32 py-2" src={logo} alt="logo" />
+          </Link>
         </div>
-        <div className="search flex items-center gap-1 p-1 has-[:focus]:border has-[:focus]:bg-black has-[:focus]:bg-opacity-50">
+        <div className="flex gap-8 hidden md:flex">
+          <NavButton to="/">Home</NavButton>
+          <NavButton to="/movies">Movies</NavButton>
+        </div>
+        <div className="flex items-center gap-1 !z-10">
           <IoSearchOutline
-            className="text-2xl !cursor-pointer"
+            className="text-2xl cursor-pointer"
             onClick={() => inputRef.current.focus()}
           />
           <input
@@ -51,7 +50,7 @@ const AppLayout = () => {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             type="text"
-            className="focus:outline-none bg-transparent focus:w-52 w-0 transition-all ease-in-out duration-300"
+            className="focus:outline-none bg-transparent w-0 focus:w-52 max-sm:focus:w-32 transition-all ease-in-out duration-300"
             placeholder="Search"
           />
         </div>
@@ -59,20 +58,19 @@ const AppLayout = () => {
       <div
         className={`fixed top-0 left-0 h-full w-52 bg-[#21252A] text-white transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
+        } transition-transform duration-300 ease-in-out z-30`}
       >
         <div className="flex justify-between items-center p-4">
           <IoClose
-            className="text-2xl cursor-pointer fixed right-0 top-16"
+            className="text-2xl cursor-pointer"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           />
         </div>
-        <div className="flex flex-col p-4 gap-3 mt-5">
+        <div className="flex flex-col p-4 gap-3">
           <NavButton to="/">Home</NavButton>
           <NavButton to="/movies">Movies</NavButton>
         </div>
       </div>
-
       <Outlet />
     </div>
   );

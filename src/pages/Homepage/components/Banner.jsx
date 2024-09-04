@@ -30,7 +30,7 @@ const Banner = () => {
       )}
       <div className="absolute bg-gradient-to-t from-black to-transparent w-full h-[56vh] z-1 bottom-0"></div>
       <div className="w-1/2 h-full justify-center flex flex-col gap-3 pl-12">
-        <div className="lg:text-4xl text-3xl font-bold !z-20">
+        <div className="lg:text-4xl text-3xl font-bold max-sm:mt-14 !z-20">
           {data?.results[0].title}
         </div>
         <div className="max-lg:h-[6.2rem] font-thin line-clamp-4 !z-20">

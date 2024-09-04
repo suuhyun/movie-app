@@ -42,7 +42,7 @@ const TrailerModal = ({ movieId, setOpenModal }) => {
       onClick={() => setOpenModal(false)}
     >
       <div
-        className="relative w-[80%] max-w-full h-0"
+        className={`relative md:w-[80%] w-[100%] max-w-full h-0`}
         style={{ paddingBottom: "56.25%" }}
       >
         <YouTube
