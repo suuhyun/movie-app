@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
-import { useSearchMovieById } from "../hooks/useSearchMovieById";
+import { useSearchMovieById } from "../../hooks/useSearchMovieById";
 import { FaStar } from "react-icons/fa";
 import { IoPeople } from "react-icons/io5";
 import { TbRating14Plus, TbRating18Plus } from "react-icons/tb";
 import { FaPlay } from "react-icons/fa";
-import TrailerModal from "../common/TrailerModal";
+import TrailerModal from "../../common/TrailerModal";
+import RecommendationSlide from "./components/RecommendationSlide";
 
 const MovieDetailPage = () => {
   const navigate = useNavigate();
@@ -113,20 +114,30 @@ const MovieDetailPage = () => {
               {data?.budget.toLocaleString()}
             </div>
           </div>
-          <div className="flex gap-5 *:py-2 *:px-8 *:bg-[#14c6b3] *:rounded-full text-black my-8">
+          <div className="flex gap-5 *:py-2 *:px-8 *:text-lg *:bg-[#14c6b3] *:rounded-full text-black my-8 hover:bg-opacity-70 *:transition">
             <button
-              className="items-center flex gap-2 text-lg"
+              className="items-center flex gap-2 hover:bg-opacity-70"
               onClick={() => {
                 setOpenModal(true);
-                console.log(openModal);
               }}
             >
               Trailer
               <FaPlay className="text-sm" />
             </button>
-            <button className="text-lg" onClick={() => navigate(`./reviews`)}>
+            <button
+              className="hover:bg-opacity-70"
+              onClick={() => {
+                navigate(`./reviews`, {
+                  state: { img: data?.poster_path, title: data?.title },
+                });
+              }}
+            >
               Reviews
             </button>
+          </div>
+          <hr className="mb-3 opacity-70" />
+          <div>
+            <RecommendationSlide movieId={data?.id} />
           </div>
         </div>
       </div>

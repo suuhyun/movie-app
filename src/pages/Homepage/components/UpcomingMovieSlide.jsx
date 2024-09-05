@@ -2,6 +2,7 @@ import React from "react";
 import { useUpcomingMoviesQuery } from "../../../hooks/useUpcomingMovies";
 import BeatLoader from "react-spinners/BeatLoader";
 import MovieSlider from "../../../common/MovieSlider";
+import { homepageSettings } from "../../../utils/slideSettings";
 
 function UpcomingMovieSlide() {
   const { data, isLoading, isError, error } = useUpcomingMoviesQuery();
@@ -22,7 +23,7 @@ function UpcomingMovieSlide() {
 
   return (
     <div className="">
-      <MovieSlider title='Upcoming Movies' movies={data.results} />
+      <MovieSlider title='Upcoming Movies' movies={data.results} settings={homepageSettings} />
     </div>
   );
 }

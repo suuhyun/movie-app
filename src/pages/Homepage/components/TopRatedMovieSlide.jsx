@@ -2,6 +2,7 @@ import React from "react";
 import { useTopRatedMoviesQuery } from "../../../hooks/useTopRatedMovies";
 import BeatLoader from "react-spinners/BeatLoader";
 import MovieSlider from "../../../common/MovieSlider";
+import { homepageSettings } from "../../../utils/slideSettings";
 
 function TopRatedMovieSlide() {
   const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
@@ -22,7 +23,7 @@ function TopRatedMovieSlide() {
 
   return (
     <div className="">
-      <MovieSlider title="Top Rated Movies" movies={data.results} />
+      <MovieSlider title="Top Rated Movies" movies={data.results} settings={homepageSettings} />
     </div>
   );
 }

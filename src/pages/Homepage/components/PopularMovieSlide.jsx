@@ -2,6 +2,7 @@ import React from "react";
 import { usePopularMoviesQuery } from "../../../hooks/usePopularMovies";
 import BeatLoader from "react-spinners/BeatLoader";
 import MovieSlider from "../../../common/MovieSlider";
+import { homepageSettings } from "../../../utils/slideSettings";
 
 function PopularMovieSlide() {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
@@ -22,7 +23,7 @@ function PopularMovieSlide() {
 
   return (
     <div>
-      <MovieSlider title="Trending Movies" movies={data.results} />
+      <MovieSlider title="Trending Movies" movies={data.results} settings={homepageSettings} />
     </div>
   );
 }

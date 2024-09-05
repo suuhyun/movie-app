@@ -3,13 +3,22 @@ import { usePopularMoviesQuery } from "../../../hooks/usePopularMovies";
 import { FaChevronRight, FaPlay } from "react-icons/fa";
 import TrailerModal from "../../../common/TrailerModal";
 import { useNavigate } from "react-router-dom";
+import { BeatLoader } from "react-spinners";
 
 const Banner = () => {
     const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
   if (isLoading) {
-    <div>Loading...</div>;
+    return (
+      <BeatLoader
+        color="#14c6b3"
+        loading="true"
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   }
   if (isError) {
     <div className="text-xl text-red">{error.message}</div>;
@@ -45,7 +54,6 @@ const Banner = () => {
             className="!cursor-pointer hover:opacity-70 !z-2 mt-7 w-fit flex items-center bg-[#14c6b3] text-black p-2 px-5 rounded-full gap-2"
             onClick={() => {
               setOpenModal(true);
-              console.log("open Modal")
             }}
           >
             Trailer
